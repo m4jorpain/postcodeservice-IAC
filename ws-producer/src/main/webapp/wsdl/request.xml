@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:postcodeRequest xmlns:p="http://nl.hu.fnt/Opdracht1/request" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nl.hu.fnt/Opdracht1/request request.xsd ">
+  <p:postcode>1234AB</p:postcode>
+</p:postcodeRequest>

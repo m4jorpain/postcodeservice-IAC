@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://nl.hu.fnt/Opdracht1/response" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="postcodeResponse" type="res:postcodeResponseType" xmlns:res="http://nl.hu.fnt/Opdracht1/response"/>
+  <xs:complexType name="postcodeResponseType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="straat"/>    <!-- De output van de service zijn 2 strings met straat- en plaatsnaam -->
+      <xs:element type="xs:string" name="plaats"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

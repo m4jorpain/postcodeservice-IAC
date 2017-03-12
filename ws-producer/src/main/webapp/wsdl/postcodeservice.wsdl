@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:req="http://nl.hu.fnt/Opdracht1/request"
+                  xmlns:rsp="http://nl.hu.fnt/Opdracht1/response"
+                  xmlns:flt="http://nl.hu.fnt/Opdracht1/fault"
+                  xmlns="http://nl.hu.fnt/Opdracht1/message/"
+                  targetNamespace="http://nl.hu.fnt/Opdracht1/message/">
+                    <!--xmlns:hdr="http://nl.hu.fnt/Opdracht1/header"-->
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import namespace="http://nl.hu.fnt/Opdracht1/request"
+                        schemaLocation="request.xsd" />
+            <xsd:import namespace="http://nl.hu.fnt/Opdracht1/response"
+                        schemaLocation="response.xsd" />
+            <!--<xsd:import namespace="http://schemas.hu.fnt.nl/berichten/header"-->
+                        <!--schemaLocation="header.xsd" />-->
+            <xsd:import namespace="http://nl.hu.fnt/Opdracht1/fault"
+                        schemaLocation="fault.xsd" />
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="request">
+        <wsdl:part name="request" element="req:postcodeRequest"/>
+    </wsdl:message>
+    <wsdl:message name="response">
+        <wsdl:part name="response" element="rsp:postcodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="fault">
+        <wsdl:part name="fault" element="flt:postcodeFault"/>
+    </wsdl:message>
+    <wsdl:portType name="postcodeServiceInterface">
+        <wsdl:operation name="giveAdress">
+            <wsdl:input message="request"/>
+            <wsdl:output message="response"/>
+            <wsdl:fault name="fault" message="fault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="postcodeServiceBinding" type="postcodeServiceInterface">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="giveAdress">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="postcodeService">
+        <wsdl:port name="WS-Port" binding="postcodeServiceBinding">
+            <soap:address location="http://localhost:8080/ws-producer/ws-producer"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
